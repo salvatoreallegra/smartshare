@@ -2,7 +2,7 @@
 
 # Assessment Overview
 
-For this assessment, you will be creating a file [command-line interface](https://en.wikipedia.org/wiki/Command-line_interface) application for 'securely' storing files. The application will be split into two parts - the client and the server. It will have support for concurrency using the Java library's concurrent API and will store files and related information in a relational database.
+For this assessment, you will be creating a file [command-line interface](https://en.wikipedia.org/wiki/Command-line_interface) application for 'securely' storing files. The application will be split into two parts - the client and the server. It will have support for concurrency using the Java library's concurrency API and will store files and related information in a relational database.
 
 ---
 
@@ -35,9 +35,17 @@ There are four cases in which the user should not be able to retrieve the specif
 
 In all cases, the user should be displayed with *the same* error message.
 
+#### Viewing
+
+When a user wants to view a file's current 'status' (downloads remaining and time until expiration), they must provide the file name and a correct password. They should then be shown the remaining downloads and time until expiration.
+
+---
+
 ## Provided Skeleton
 
 **Disclaimer**:  *The skeleton provided is not thoroughly tested and may not be utilizing features of picocli that could make this easier. It is a working example showing **one** way to approach this problem. It should be good enough to build on top of. However, it is entirely up to you how the user will interact with the CLI as long as the basic requirements are met.*  
 
-The skeleton contains a basic boilerplate that utilizes declaritively registered [**subcommands**](https://picocli.info/#_subcommands). This enabled the ability to break uploading and download into separate parts of the application without using options.
+The skeleton contains a basic boilerplate that utilizes declaritively registered [**subcommands**](https://picocli.info/#_subcommands). This enabled the ability to break uploading and download into separate parts of the application without using options. You are also given a `schema.sql` which you can use to generate the appropriate tables to be used when creating your 'Data Access Objects' classes.
+
+The skeleton contains **very** basic scaffolding including a working command-line interface application that takes 'download' and 'upload' commands and prints verification messages to the user. It also contains empty DTO classes in the `client.dto` package, an incomplete `Api` class in the `api` package, and an empty `SmartShareServer` class in the `server` package. The skeleton does not contain any code that connects the client to the server The server side of the skeleton is left completely empty and it is up to you to create a concurrent server that interacts with a database in order to appropriately store and retrieve files. It also lacks any database connectivity code. You will be required to implement DAO's the do the required CRUD operations on the database generated from the provided schema. 
 

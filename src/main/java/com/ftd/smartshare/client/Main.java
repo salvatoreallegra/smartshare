@@ -6,7 +6,7 @@ import picocli.CommandLine;
 class Main {
 
     public static void main(String[] args) {
-        CommandLine.run(new SmartShare(), "u", "./pom.xml"); // Pass cli arguments here
+        CommandLine.run(new SmartShare()); // Pass cli arguments here
     }
 
 }

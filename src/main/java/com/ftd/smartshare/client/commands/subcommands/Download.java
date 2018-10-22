@@ -5,7 +5,8 @@ import picocli.CommandLine;
 @CommandLine.Command(
         description = "Downloads a file",
         name = "download",
-        aliases = "d"
+        aliases = "d",
+        mixinStandardHelpOptions = true
 )
 public class Download implements Runnable {
 

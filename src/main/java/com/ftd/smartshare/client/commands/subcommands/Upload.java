@@ -8,7 +8,8 @@ import java.io.File;
 @CommandLine.Command(
         description = "Uploads file using a given 'password', expiration (60 minutes by default), a max downloads (1 by default)",
         name = "upload",
-        aliases = "u"
+        aliases = "u",
+        mixinStandardHelpOptions = true
 )
 public class Upload implements Runnable {
 

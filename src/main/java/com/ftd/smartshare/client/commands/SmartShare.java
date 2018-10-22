@@ -1,7 +1,7 @@
-package com.ftd.smartshare.commands;
+package com.ftd.smartshare.client.commands;
 
-import com.ftd.smartshare.commands.subcommands.Download;
-import com.ftd.smartshare.commands.subcommands.Upload;
+import com.ftd.smartshare.client.commands.subcommands.Download;
+import com.ftd.smartshare.client.commands.subcommands.Upload;
 import picocli.CommandLine;
 
 @CommandLine.Command(

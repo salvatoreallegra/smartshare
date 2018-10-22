@@ -1,6 +1,6 @@
-package com.ftd.smartshare;
+package com.ftd.smartshare.client;
 
-import com.ftd.smartshare.commands.SmartShare;
+import com.ftd.smartshare.client.commands.SmartShare;
 import picocli.CommandLine;
 
 class Main {

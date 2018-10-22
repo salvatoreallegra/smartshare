@@ -1,4 +1,4 @@
-package com.ftd.smartshare.commands.subcommands;
+package com.ftd.smartshare.client.commands.subcommands;
 
 import org.apache.commons.text.RandomStringGenerator;
 import picocli.CommandLine;

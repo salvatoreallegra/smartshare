@@ -43,7 +43,7 @@ When a user wants to view a file's current 'status' (downloads remaining and tim
 
 ## Provided Skeleton
 
-**Disclaimer**:  *The skeleton provided is not thoroughly tested and may not be utilizing features of picocli that could make this easier. It is a working example showing **one** way to approach this problem. It should be good enough to build on top of. However, it is entirely up to you how the user will interact with the CLI as long as the basic requirements are met.*  
+**Disclaimer**:  *The skeleton provided is not thoroughly tested and may not be utilizing features of picocli that could make this easier. It is a working example showing **one** way to approach this problem. It is written to be enough scaffolding to build on top of as well as demonstrate how to use picocli. However, it is entirely up to you how the user will interact with the CLI as long as the requirements listed below are met.*  
 
 The skeleton contains a basic boilerplate that utilizes declaritively registered [**subcommands**](https://picocli.info/#_subcommands). This enabled the ability to break uploading and download into separate parts of the application without using options. You are also given a `schema.sql` which you can use to generate the appropriate tables to be used when creating your 'Data Access Objects' classes.
 

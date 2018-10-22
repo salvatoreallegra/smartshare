@@ -2,7 +2,7 @@
 
 # Assessment Overview
 
-For this assessment, you will be creating a file [command-line interface](https://en.wikipedia.org/wiki/Command-line_interface) application for 'securely' storing files. The application will be split into two parts - the client and the server. Tt will have support for concurrency using the Java library's concurrent API and will store files and related information in a relational database.
+For this assessment, you will be creating a file [command-line interface](https://en.wikipedia.org/wiki/Command-line_interface) application for 'securely' storing files. The application will be split into two parts - the client and the server. It will have support for concurrency using the Java library's concurrent API and will store files and related information in a relational database.
 
 ---
 

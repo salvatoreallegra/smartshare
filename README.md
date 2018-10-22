@@ -37,7 +37,7 @@ In all cases, the user should be displayed with *the same* error message.
 
 #### Viewing
 
-When a user wants to view a file's current 'status' (downloads remaining and time until expiration), they must provide the file name and a correct password. They should then be shown the remaining downloads and time until expiration.
+When a user wants to view a file's current 'summary', they must provide the file name and a correct password. They should then be shown the time created, remaining downloads and time until expiration.
 
 ---
 

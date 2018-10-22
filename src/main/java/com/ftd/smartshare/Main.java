@@ -1,9 +1,12 @@
 package com.ftd.smartshare;
 
-public class Main {
+import com.ftd.smartshare.commands.SmartShare;
+import picocli.CommandLine;
 
-    public static void main(String[] args) {
+class Main {
 
+    public static void main(String[] args) throws Exception {
+        CommandLine.run(new SmartShare(), "u", "./pom.xml"); // Pass cli arguments here
     }
 
 }

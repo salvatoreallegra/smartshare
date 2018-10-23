@@ -25,7 +25,7 @@ When the user wants to upload a file, they should be required to provide a ['rel
 File names should be unique. If a file is uploaded with the same name as another file, it should fail to upload.
 
 **Additional features for uploading**
-* **Expiration** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the number of minutes until the file expires and can no longer be accessed. If a value is not provided, the expiration should default to `60 minutes` from the time the file was uploaded. The max value allowed should be `1440` minutes (24 hours) and the min value allowed should be `1` minute.
+* **Expiration** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the number of minutes until the file expires and can no longer be accessed. If a value is not provided, the expiration should default to `60 minutes` from the time the file was uploaded. The maximum value allowed should be `1440` minutes (24 hours) and the minimum value allowed should be `1` minute.
 * **Maximum Downloads** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the maximum number of downloads available until the file can no longer be accessed. If a value is not provided, there should be no restriction on the number of downloads available.
 
 > ### Downloading

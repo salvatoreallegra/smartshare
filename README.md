@@ -16,12 +16,17 @@ Creating command-line applications is difficult. Parsing text, arguments, option
 
 ## Requirements Overview
 
+> ### Concurrency
+When a client connects to the server, the server should create a new `Thread` to handle the request. The thread should run until the response is given to the client.
+
 > ### Uploading
 When the user wants to upload a file, they should be required to provide a ['relative path'](https://support.dtsearch.com/webhelp/dtsearch/relative_paths.htm) to the file. They have the option of providing their own password which will act as the 'key' or 'password' for people wishing to download the file. If they do not provide their own password, a password will be generated for them. This functionality is provided for you in the skeleton of the assessment.
 
+File names should be unique. If a file is uploaded with the same name as another file, it should fail to upload.
+
 **Additional features for uploading**
-* **Expiration** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the number of minutes until the file expires and can no longer be accessed. If a value is not provided, the expiration should default to `60 minutes` from the time the file was uploaded.
-* **Maximum Downloads** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the maximum number of downloads available until the file can no longer be accessed. If a value is not provided, the maximum downloads should default to `1`.
+* **Expiration** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the number of minutes until the file expires and can no longer be accessed. If a value is not provided, the expiration should default to `60 minutes` from the time the file was uploaded. The max value allowed should be `1440` minutes (24 hours) and the min value allowed should be `1` minute.
+* **Maximum Downloads** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the maximum number of downloads available until the file can no longer be accessed. If a value is not provided, there should be no restriction on the number of downloads available.
 
 > ### Downloading
 
@@ -33,9 +38,13 @@ There are four cases in which the user should not be able to retrieve the specif
 * The file has 'expired' - the time has passed that was specified when the file was uploaded
 * The maximum downloads have been reached - this value was passed when the file was uploaded
 
-**In all cases**, the user should be displayed with *the same* error message.
+If a download fails, the user should be displayed with *the same* error message **in all cases.**
 
 It is up to you where the files are stored once they're downloaded. It is recommended to store them relative to where the application was executed. If run from within eclipse, this will likely be the root of the classpath (the top of the project folder).
+
+> ### File Deletion
+
+If a file is expired or the maximum downloads have been reached, the file entry in the database should be deleted. 
 
 > ### Viewing
 
@@ -45,7 +54,7 @@ When a user wants to view a file's current 'summary', they must provide the file
 
 ## Provided Skeleton
 
-**Disclaimer**:  *The skeleton provided has been briefly tested, but may not be utilizing features of picocli that could make this easier. It is a working example created for the purpose of showing **one** way to approach this problem. It is written to be enough scaffolding to build on top of as well as demonstrate how to use picocli. However, it is entirely up to you exactly how the user will interact with the CLI as long as the requirements listed below are met. In the case that you are satisfied with the skeleton's implementation, feel free to continue building on top of it.*  
+**Disclaimer**:  *The skeleton provided has been briefly tested, but may not be utilizing features of picocli that could make this easier. It is a working example created for the purpose of showing **one** way to approach this problem. It is written to be enough scaffolding to build on top of as well as demonstrate how to use picocli. However, it is entirely up to you exactly how the user will interact with the CLI as long as the requirements listed below are met. In the case that you are satisfied with the skeleton's implementation, feel free to continue building on top of it.* 
 
 The skeleton contains a basic boilerplate showcasing some of the basic features of picocli. You are given a skeleton that provides a working command-line interface which 'download' and 'upload' commands and their arguments and responds by printing verification message to the console. One of the features that it utilizes is declaratively registered [**subcommands**](https://picocli.info/#_subcommands). This enabled the ability to break uploading and download into separate parts of the application without using options. The skeleton contains empty DTO classes in the `client.dto` package, an incomplete `Api` class in the `api` package, and an empty `SmartShareServer` class in the `server` package. The skeleton does not contain any code that connects the client to the server The server side of the skeleton is left completely empty and it is up to you to create a concurrent server that interacts with a database in order to appropriately store and retrieve files. It also lacks any database connectivity code. You will be required to implement DAO's the do the required CRUD operations on the database tables. 
 
@@ -53,7 +62,7 @@ You are also given a `schema.sql` which you can use to generate an appropriate s
 
 ## Running/Testing the Client Application 
 
-In order to test and run your application, it is recommended to run commands programatically. Inside of `client/Main.java`, the commands that you want to run go as arguments to the `CommandLine.run` method. Each space-separate part of the command that would usually be passed via the command-line should be passed as **separate** strings.
+In order to test and run your application, it is recommended to run commands programatically. Examples of this are inside of `client/Main.java`. The commands that you want to run are provided as arguments to the `CommandLine.run` method. Each space-separate part of the command that would usually be passed via the command-line should be passed as **separate** strings.
 
 Examples:
 

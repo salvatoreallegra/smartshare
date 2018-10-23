@@ -17,7 +17,7 @@ public final class Api {
      * Send download request
      *
      * @param downloadRequestDto    JAXB annotated class representing the download request
-
+     * @return true if request was successful and false if unsuccessful
      */
     public static boolean download(DownloadRequestDto downloadRequestDto) {
         throw new NotImplementedException();

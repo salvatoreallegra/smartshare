@@ -16,14 +16,14 @@ Creating command-line applications is difficult. Parsing text, arguments, option
 
 ## Requirements Overview
 
-#### Uploading
+> ### Uploading
 When the user wants to upload a file, they should be required to provide a ['relative path'](https://support.dtsearch.com/webhelp/dtsearch/relative_paths.htm) to the file. They have the option of providing their own password which will act as the 'key' or 'password' for people wishing to download the file. If they do not provide their own password, a password will be generated for them. This functionality is provided for you in the skeleton of the assessment.
 
 **Additional features for uploading**
-* **Expiration** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the number of minutes until the file expires and can no longer be accessed. If one is not provide, it should default to `60 minutes`.
-* **Maximum Downloads** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the maximum number of downloads available until the file can no longer be accessed. If one is not provided it should default to `1`
+* **Expiration** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the number of minutes until the file expires and can no longer be accessed. If a value is not provided, the expiration should default to `60 minutes` from the time the file was uploaded.
+* **Maximum Downloads** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the maximum number of downloads available until the file can no longer be accessed. If a value is not provided, the maximum downloads should default to `1`.
 
-#### Downloading
+> ### Downloading
 
 When a user wants to retrieve a file, they will be required to provide a filename and a password. 
 
@@ -35,7 +35,9 @@ There are four cases in which the user should not be able to retrieve the specif
 
 **In all cases**, the user should be displayed with *the same* error message.
 
-#### Viewing
+It is up to you where the files are stored once they're downloaded. It is recommended to store them relative to where the application was executed. If run from within eclipse, this will likely be the root of the classpath (the top of the project folder).
+
+> ### Viewing
 
 When a user wants to view a file's current 'summary', they must provide the file name and a correct password. They should then be shown the time created, remaining downloads and time until expiration.
 
@@ -43,9 +45,17 @@ When a user wants to view a file's current 'summary', they must provide the file
 
 ## Provided Skeleton
 
-**Disclaimer**:  *The skeleton provided is not thoroughly tested and may not be utilizing features of picocli that could make this easier. It is a working example showing **one** way to approach this problem. It is written to be enough scaffolding to build on top of as well as demonstrate how to use picocli. However, it is entirely up to you how the user will interact with the CLI as long as the requirements listed below are met.*  
+**Disclaimer**:  *The skeleton provided has been briefly tested, but may not be utilizing features of picocli that could make this easier. It is a working example created for the purpose of showing **one** way to approach this problem. It is written to be enough scaffolding to build on top of as well as demonstrate how to use picocli. However, it is entirely up to you exactly how the user will interact with the CLI as long as the requirements listed below are met. In the case that you are satisfied with the skeleton's implementation, feel free to continue building on top of it.*  
 
-The skeleton contains a basic boilerplate that utilizes declaratively registered [**subcommands**](https://picocli.info/#_subcommands). This enabled the ability to break uploading and download into separate parts of the application without using options. You are also given a `schema.sql` which you can use to generate the appropriate tables to be used when creating your 'Data Access Objects' classes.
+The skeleton contains a basic boilerplate showcasing some of the basic features of picocli. You are given a skeleton that provides a working command-line interface which 'download' and 'upload' commands and their arguments and responds by printing verification message to the console. One of the features that it utilizes is declaratively registered [**subcommands**](https://picocli.info/#_subcommands). This enabled the ability to break uploading and download into separate parts of the application without using options. The skeleton contains empty DTO classes in the `client.dto` package, an incomplete `Api` class in the `api` package, and an empty `SmartShareServer` class in the `server` package. The skeleton does not contain any code that connects the client to the server The server side of the skeleton is left completely empty and it is up to you to create a concurrent server that interacts with a database in order to appropriately store and retrieve files. It also lacks any database connectivity code. You will be required to implement DAO's the do the required CRUD operations on the database tables. 
 
-The skeleton contains **very** basic scaffolding including a working command-line interface application that takes 'download' and 'upload' commands and prints verification messages to the user. It also contains empty DTO classes in the `client.dto` package, an incomplete `Api` class in the `api` package, and an empty `SmartShareServer` class in the `server` package. The skeleton does not contain any code that connects the client to the server The server side of the skeleton is left completely empty and it is up to you to create a concurrent server that interacts with a database in order to appropriately store and retrieve files. It also lacks any database connectivity code. You will be required to implement DAO's the do the required CRUD operations on the database generated from the provided schema. 
+You are also given a `schema.sql` which you can use to generate an appropriate schema and tables to be used when creating your 'Data Access Objects' classes.
+
+---
+
+## Bonus Challenge
+
+*This bonus challenge should **only** be attempted after completion of all of the above requirements. If any of the above requirements are not met, and the bonus challenge is attempted, you will not receive any extra credit and you will be deducted additional points for attempting extra work without meeting the base requirements.*
+
+Modify the schema and application to support uploading/downloading multiple files under a single request. The files should be uploaded with a single password and retrieved with the same password. All other upload/download requirements still apply.
 

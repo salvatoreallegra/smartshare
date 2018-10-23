@@ -2,7 +2,7 @@
 
 # Assessment Overview
 
-For this assessment, you will be creating a file [command-line interface](https://en.wikipedia.org/wiki/Command-line_interface) application for 'securely' storing files. Files will be uploaded with a 'password'. If another user wants to download the file, they must provide the file name and password in order to download it. The application will be split into two parts - the client and the server. It will have support for concurrency using the Java library's concurrency API and will store files and related information in a relational database.
+For this assessment, you will be creating a [command-line interface](https://en.wikipedia.org/wiki/Command-line_interface) application for 'securely' storing files. Files will be uploaded with a 'password'. If another user wants to download the file, they must provide the file name and password in order to download it. The application will be split into two parts - the client and the server. It will have support for concurrency using the Java library's concurrency API and will store files and related information in a relational database.
 
 ---
 

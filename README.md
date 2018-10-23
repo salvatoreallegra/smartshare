@@ -51,6 +51,27 @@ The skeleton contains a basic boilerplate showcasing some of the basic features 
 
 You are also given a `schema.sql` which you can use to generate an appropriate schema and tables to be used when creating your 'Data Access Objects' classes.
 
+## Running/Testing the Client Application 
+
+In order to test and run your application, it is recommended to run commands programatically. Inside of `client/Main.java`, the commands that you want to run go as arguments to the `CommandLine.run` method. Each space-separate part of the command that would usually be passed via the command-line should be passed as **separate** strings.
+
+Examples:
+
+```java
+// Run the CLI program with no arguments
+CommandLine.run(new SmartShare()); 
+
+// Run the program with the --help flag to see additional usage and documentation for the program
+CommandLine.run(new SmartShare(), "-h");
+
+// Run the program with the upload subcommand - will fail due to missing required parameters
+CommandLine.run(new SmartShare(), "upload"); 
+
+// Run the program with the upload subcommand and provide a file along with the optional password
+// **NOTE** The commandline arguments/flags are passed as *separate* strings
+CommandLine.run(new SmartShare(), "upload", "pom.xml", "secretpassword")
+```
+
 ---
 
 ## Bonus Challenge

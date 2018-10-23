@@ -20,8 +20,8 @@ Creating command-line applications is difficult. Parsing text, arguments, option
 When the user wants to upload a file, they should be required to provide a ['relative path'](https://support.dtsearch.com/webhelp/dtsearch/relative_paths.htm) to the file. They have the option of providing their own password which will act as the 'key' or 'password' for people wishing to download the file. If they do not provide their own password, a password will be generated for them. This functionality is provided for you in the skeleton of the assessment.
 
 **Additional features for uploading**
-* **Expiration** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the number of minutes until the file expires and can no longer be accessed.
-* **Maximum Downloads** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the maximum number of downloads available until the file can no longer be accessed
+* **Expiration** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the number of minutes until the file expires and can no longer be accessed. If one is not provide, it should default to `60 minutes`.
+* **Maximum Downloads** - The client should be able to provide an [optional](https://picocli.info/#_options_and_parameters) flag denoting the maximum number of downloads available until the file can no longer be accessed. If one is not provided it should default to `1`
 
 #### Downloading
 
@@ -33,7 +33,7 @@ There are four cases in which the user should not be able to retrieve the specif
 * The file has 'expired' - the time has passed that was specified when the file was uploaded
 * The maximum downloads have been reached - this value was passed when the file was uploaded
 
-In all cases, the user should be displayed with *the same* error message.
+**In all cases**, the user should be displayed with *the same* error message.
 
 #### Viewing
 

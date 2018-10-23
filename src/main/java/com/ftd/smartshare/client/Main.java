@@ -8,6 +8,7 @@ class Main {
     public static void main(String[] args) {
         CommandLine.run(new SmartShare()); // Pass cli arguments here
 //        CommandLine.run(new SmartShare(), "-h");
+//        CommandLine.run(new SmartShare(), "--version");
 //        CommandLine.run(new SmartShare(), "upload");
 //        CommandLine.run(new SmartShare(), "upload", "pom.xml");
 //        CommandLine.run(new SmartShare(), "upload", ".gitignore");

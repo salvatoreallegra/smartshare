@@ -1,7 +1,7 @@
 package com.ftd.smartshare.client.api;
 
-import com.ftd.smartshare.client.dto.DownloadRequestDto;
-import com.ftd.smartshare.client.dto.UploadRequestDto;
+import com.ftd.smartshare.dto.DownloadRequestDto;
+import com.ftd.smartshare.dto.UploadRequestDto;
 import com.ftd.smartshare.utils.NotImplementedException;
 
 public final class Api {

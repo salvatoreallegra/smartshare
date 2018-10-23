@@ -19,7 +19,8 @@ CREATE TABLE smartshare.files
     max_downloads integer NOT NULL,
     total_downloads integer NOT NULL,
     password text COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT files_pkey PRIMARY KEY (id)
+    CONSTRAINT files_pkey PRIMARY KEY (id),
+    CONSTRAINT file_name_key UNIQUE (file_name)
 )
 WITH (
     OIDS = FALSE

@@ -1,4 +1,4 @@
-package com.ftd.smartshare.client.dto;
+package com.ftd.smartshare.dto;
 
 public class DownloadRequestDto {
     // TODO

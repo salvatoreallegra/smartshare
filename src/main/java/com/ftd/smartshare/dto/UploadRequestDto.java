@@ -3,15 +3,28 @@ package com.ftd.smartshare.dto;
 import java.io.File;
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name="Field")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class UploadRequestDto {
 	
+	@XmlElement
 	private String fileName;
+	@XmlElement
 	private File file;
+	@XmlElement
 	private Date timeCreated;
+	@XmlElement
 	private int time;
+	@XmlElement
 	private int maxDownloads;
+	@XmlElement
 	private int totalDownloads;
+	@XmlElement
 	private String Password;
 	
 	

@@ -15,11 +15,10 @@ public class UploadRequestDto {
 	@XmlElement
 	private String fileName;
 	@XmlElement
-	private File file;
-	@XmlElement
+	
 	private Date timeCreated;
 	@XmlElement
-	private int time;
+	private int timeTillExpiration;
 	@XmlElement
 	private int maxDownloads;
 	@XmlElement
@@ -41,15 +40,7 @@ public class UploadRequestDto {
 		this.fileName = fileName;
 	}
 
-
-	public File getFile() {
-		return file;
-	}
-
-
-	public void setFile(File file) {
-		this.file = file;
-	}
+	
 
 
 	public Date getTimeCreated() {
@@ -62,13 +53,16 @@ public class UploadRequestDto {
 	}
 
 
-	public int getTime() {
-		return time;
+	public int getTimeTillExpiration() {
+		return timeTillExpiration;
 	}
 
 
-	public void setTime(int time) {
-		this.time = time;
+	public void setTimeTillExpiration(int timeTillExpiration) {
+		if((timeTillExpiration < 1) || (timeTillExpiration > 1440)) {
+			throw new IllegalArgumentException();
+		}
+		this.timeTillExpiration = timeTillExpiration;
 	}
 
 

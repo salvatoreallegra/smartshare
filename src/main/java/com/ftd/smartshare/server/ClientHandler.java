@@ -19,6 +19,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import com.ftd.smartshare.data.dao.UploadDao;
 import com.ftd.smartshare.dto.*;
 
 public class ClientHandler implements Runnable {
@@ -41,18 +42,7 @@ public class ClientHandler implements Runnable {
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			StringReader stringReader = new StringReader(bufferedReader.readLine());
 
-			try {
-				Class.forName("org.postgresql.Driver");
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			String connectionString = "jdbc:postgresql://localhost:5432/smartshare";
-	        try {
-	        	Connection connection = DriverManager.getConnection(connectionString, "postgres", "JediKnight1");
-	        }
-	        catch (SQLException e) {
-	        	e.printStackTrace();
-	        }
+		
 
 			// Unmarshall stringReader to UploadRequestDto object
 			UploadRequestDto upLoadRequest;
@@ -72,8 +62,8 @@ public class ClientHandler implements Runnable {
 					System.out.println(upLoadRequest.getFileName());
 					System.out.println(upLoadRequest.getPassword());
 
-//					out.write("client Side<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-				
+					UploadDao dao = new UploadDao();
+					dao.insertFile(upLoadRequest.);
 
 					System.out.println("Howdy");
 					successMessage = "true";

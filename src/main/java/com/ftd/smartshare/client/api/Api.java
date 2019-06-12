@@ -44,9 +44,10 @@ public final class Api {
      */
     public static boolean upload(UploadRequestDto uploadRequestDto) {
     	
-    	try (Socket socket = new Socket(HOST, PORT);
+    	try (   Socket socket = new Socket(HOST, PORT);
 				PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-				//BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    			
 				//FileWriter fileWriter = new FileWriter("quotes.xml");
 				//PrintWriter printWriter = new PrintWriter(fileWriter);
 
@@ -61,10 +62,19 @@ public final class Api {
 		// Write 'stringified' XML to socket
 		out.println(stringWriter.toString());
 		
+		String success = in.readLine();
+		if(success != null){
+			System.out.println(success);
+		}
+		
+		
     	} catch (JAXBException | IOException e) {
 			System.out.println("Client Disconnected from Server...");
 		}
-    	 return true;
+    	
+    	return true;
+    	
+    	 
     }
    
 

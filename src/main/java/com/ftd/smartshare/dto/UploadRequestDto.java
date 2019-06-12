@@ -15,7 +15,12 @@ public class UploadRequestDto {
 	@XmlElement
 	private String fileName;
 	@XmlElement
+	private byte[] fileBytes;
 	
+
+
+
+	@XmlElement
 	private Date timeCreated;
 	@XmlElement
 	private int timeTillExpiration;
@@ -29,6 +34,8 @@ public class UploadRequestDto {
 	
 	public UploadRequestDto(){
 		
+		timeTillExpiration = 60;
+			
 				
 	}
 	public String getFileName() {
@@ -38,6 +45,13 @@ public class UploadRequestDto {
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+	}
+
+	public byte[] getFileBytes() {
+		return fileBytes;
+	}
+	public void setFileBytes(byte[] fileBytes) {
+		this.fileBytes = fileBytes;
 	}
 
 	

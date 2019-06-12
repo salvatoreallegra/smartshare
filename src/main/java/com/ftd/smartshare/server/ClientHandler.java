@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.StringReader;
 import java.net.Socket;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,10 +21,8 @@ import javax.xml.bind.Unmarshaller;
 
 import com.ftd.smartshare.dto.*;
 
+public class ClientHandler implements Runnable {
 
-
-public class ClientHandler implements Runnable{
-	
 	private final Socket clientSocket;
 
 	public ClientHandler(Socket socket) {
@@ -31,44 +32,65 @@ public class ClientHandler implements Runnable{
 	@Override
 	public void run() {
 
-		try {			
-			
+		try {
+
 			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+			BufferedWriter successMessageWriter = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
 			JAXBContext context = JAXBContext.newInstance(UploadRequestDto.class);
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			StringReader stringReader = new StringReader(bufferedReader.readLine());
-			
-			
+
+			try {
+				Class.forName("org.postgresql.Driver");
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			String connectionString = "jdbc:postgresql://localhost:5432/smartshare";
+	        try {
+	        	Connection connection = DriverManager.getConnection(connectionString, "postgres", "JediKnight1");
+	        }
+	        catch (SQLException e) {
+	        	e.printStackTrace();
+	        }
+
 			// Unmarshall stringReader to UploadRequestDto object
-			UploadRequestDto upLoadRequest;;
-		
-				upLoadRequest = (UploadRequestDto) unmarshaller.unmarshal(stringReader);
+			UploadRequestDto upLoadRequest;
+			String successMessage;  //will be set to true if we write to the database
 			
-			while(!clientSocket.isClosed()){
-				
+
+			upLoadRequest = (UploadRequestDto) unmarshaller.unmarshal(stringReader);
+
+			while (!clientSocket.isClosed()) {
+
 				JAXBContext contextUnmarshall;
 				try {
-					contextUnmarshall = JAXBContext.newInstance(UploadRequestDto.class);
-					Marshaller marshaller = contextUnmarshall.createMarshaller();
-					marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-					marshaller.marshal(upLoadRequest,out);
+//					contextUnmarshall = JAXBContext.newInstance(UploadRequestDto.class);
+//					Marshaller marshaller = contextUnmarshall.createMarshaller();
+//					marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+					// marshaller.marshal(upLoadRequest,out);
 					System.out.println(upLoadRequest.getFileName());
 					System.out.println(upLoadRequest.getPassword());
-					System.out.println(upLoadRequest.getPassword());
-					
+
+//					out.write("client Side<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+				
+
 					System.out.println("Howdy");
+					successMessage = "true";
+					out.write(successMessage);
+					out.flush();
 					clientSocket.close();
-				} catch (JAXBException e) {
+				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					clientSocket.close();
 					System.out.println("Lost connection to the client");
+				} finally {
+
 				}
-				
-				
-			} //end while loop
-		
+
+			} // end while loop
+
 		} catch (IOException | JAXBException e) {
 			e.printStackTrace();
 			try {
@@ -82,4 +104,4 @@ public class ClientHandler implements Runnable{
 
 	} // end run method
 
-} //end class
+} // end class

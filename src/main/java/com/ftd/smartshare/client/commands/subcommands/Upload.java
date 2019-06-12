@@ -12,9 +12,12 @@ import java.io.File;
         aliases = "u",
         mixinStandardHelpOptions = true
 )
-public class Upload implements Runnable {
 
-    @CommandLine.Parameters(arity="1", index = "0", description = "The file to be uploaded")
+
+
+public class Upload implements Runnable {
+	
+	@CommandLine.Parameters(arity="1", index = "0", description = "The file to be uploaded")
     private File file;
 
     @CommandLine.Parameters(arity="0", index = "1", description = "The password for the file")
@@ -24,6 +27,8 @@ public class Upload implements Runnable {
         System.out.println("Uploading: " + file.getAbsolutePath());
         System.out.println("Password will be printed below");
         System.out.println(password);
+        
+        
     }
 
 

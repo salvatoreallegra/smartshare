@@ -37,8 +37,7 @@ public class ClientHandler implements Runnable {
 		try {
 
 			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-			BufferedWriter successMessageWriter = new BufferedWriter(
-					new OutputStreamWriter(clientSocket.getOutputStream()));
+			
 			JAXBContext context = JAXBContext.newInstance(UploadRequestDto.class);
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));

@@ -35,19 +35,34 @@ public final class Api {
     public static boolean download(DownloadRequestDto downloadRequestDto) {
     	
     	try (   Socket socket = new Socket(HOST, PORT);
-				//PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+				PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 				BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     			
 				//FileWriter fileWriter = new FileWriter("quotes.xml");
 				//PrintWriter printWriter = new PrintWriter(fileWriter);
+    			
+    	
 
 		) {
     		
+    		JAXBContext context = JAXBContext.newInstance(UploadRequestDto.class);
+			Marshaller marshaller = context.createMarshaller();
+
+			// Marshal request to stringWriter
+			StringWriter stringWriter = new StringWriter();
+			marshaller.marshal(downloadRequestDto, stringWriter);
+			
+			out.println(stringWriter.toString());
+			
+			String success = in.readLine();
+			if(success != null){
+				System.out.println(success);
+			}
+
     		
-    		
-    	} catch(Exception e) {
-    		
-    	}
+    	} catch (JAXBException | IOException e) {
+			System.out.println("Client Disconnected from Server...");
+		}
     	
     	return true;
         

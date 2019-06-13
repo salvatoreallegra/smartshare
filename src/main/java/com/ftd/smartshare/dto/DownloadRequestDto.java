@@ -13,9 +13,11 @@ public class DownloadRequestDto {
 	
 	@XmlElement
 	private String password;
-	@XmlElement
-	
+	@XmlElement	
 	private String fileName;
+	
+	@XmlElement
+	private byte[] fileBytes;
 	
 	public DownloadRequestDto() {}
 

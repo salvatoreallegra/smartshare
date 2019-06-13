@@ -33,7 +33,24 @@ public final class Api {
      * @return true if request was successful and false if unsuccessful
      */
     public static boolean download(DownloadRequestDto downloadRequestDto) {
-        throw new NotImplementedException();
+    	
+    	try (   Socket socket = new Socket(HOST, PORT);
+				//PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+				BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    			
+				//FileWriter fileWriter = new FileWriter("quotes.xml");
+				//PrintWriter printWriter = new PrintWriter(fileWriter);
+
+		) {
+    		
+    		
+    		
+    	} catch(Exception e) {
+    		
+    	}
+    	
+    	return true;
+        
     }
 
     /**

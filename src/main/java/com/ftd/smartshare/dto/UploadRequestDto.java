@@ -9,10 +9,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="Field")
+@XmlRootElement(name = "Field")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class UploadRequestDto {
-	
+
 	@XmlElement
 	private String fileName;
 	@XmlElement
@@ -25,17 +25,16 @@ public class UploadRequestDto {
 	private int totalDownloads;
 	@XmlElement
 	private String Password;
-	
-	
-	public UploadRequestDto(){
-		
-			minutes = 60l;	
-				
+
+	public UploadRequestDto() {
+
+		minutes = 60l;
+
 	}
+
 	public String getFileName() {
 		return fileName;
 	}
-
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
@@ -44,56 +43,42 @@ public class UploadRequestDto {
 	public byte[] getFileBytes() {
 		return fileBytes;
 	}
+
 	public void setFileBytes(byte[] fileBytes) {
 		this.fileBytes = fileBytes;
 	}
-
-	
-
-
-	
-
 
 	public long getTimeTillExpiration() {
 		return minutes;
 	}
 
-
 	public void setTimeTillExpiration(long minutes) {
-		
-	
+
 		this.minutes = minutes;
 	}
-
 
 	public int getMaxDownloads() {
 		return maxDownloads;
 	}
 
-
 	public void setMaxDownloads(int maxDownloads) {
 		this.maxDownloads = maxDownloads;
 	}
-
 
 	public int getTotalDownloads() {
 		return totalDownloads;
 	}
 
-
 	public void setTotalDownloads(int totalDownloads) {
 		this.totalDownloads = totalDownloads;
 	}
-
 
 	public String getPassword() {
 		return Password;
 	}
 
-
 	public void setPassword(String password) {
 		Password = password;
 	}
-	
-    
+
 }

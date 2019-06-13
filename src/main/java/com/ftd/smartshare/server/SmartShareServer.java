@@ -3,8 +3,6 @@ package com.ftd.smartshare.server;
 import java.io.*;
 import java.net.*;
 
-
-
 public class SmartShareServer {
 
 	public static void main(String[] args) {
@@ -12,7 +10,6 @@ public class SmartShareServer {
 		ServerSocket server;
 
 		System.out.println("Server started");
-		
 
 		try {
 			server = new ServerSocket(3000);
@@ -33,4 +30,3 @@ public class SmartShareServer {
 
 	}
 }
-

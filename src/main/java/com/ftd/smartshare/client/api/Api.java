@@ -54,13 +54,13 @@ public final class Api {
 			
 			out.println(stringWriter.toString());
 			
-			String success = in.readLine();
-			if(success != null){
-				System.out.println(success);
+//			String success = in.readLine();
+//			if(success != null){
+//				System.out.println(success);
 			}
 
     		
-    	} catch (JAXBException | IOException e) {
+    	 catch (JAXBException | IOException e) { 
 			System.out.println("Client Disconnected from Server...");
 		}
     	

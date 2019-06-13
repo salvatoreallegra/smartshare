@@ -33,7 +33,7 @@ public class ClientHandler implements Runnable {
 
 	@Override
 	public void run() {
-
+        
 		try {
 
 			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));

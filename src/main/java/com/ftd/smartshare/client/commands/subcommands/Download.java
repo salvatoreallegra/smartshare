@@ -23,8 +23,9 @@ public class Download implements Runnable {
     private DownloadRequestDto downloadDto = new DownloadRequestDto();
     public void run() {
         System.out.println("Downloading " + fileName);
-        
-        boolean response = Api.download(uploadDto);
+        downloadDto.setFileName("pom.xml");
+        downloadDto.setPassword("1234");
+        boolean response = Api.download(downloadDto);
     }
 
 }

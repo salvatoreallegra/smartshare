@@ -12,6 +12,7 @@ public class SmartShareServer {
 		ServerSocket server;
 
 		System.out.println("Server started");
+		
 
 		try {
 			server = new ServerSocket(3000);
@@ -19,6 +20,8 @@ public class SmartShareServer {
 
 				Socket client = server.accept();
 				System.out.println("New Client Connected");
+				String hostName = client.getInetAddress().getHostName();
+				System.out.println(hostName);
 				ClientHandler clientSocket = new ClientHandler(client);
 				new Thread(clientSocket).start();
 

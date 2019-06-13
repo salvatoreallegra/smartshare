@@ -10,6 +10,7 @@ import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -63,7 +64,7 @@ public class ClientHandler implements Runnable {
 					System.out.println(upLoadRequest.getPassword());
 
 					UploadDao dao = new UploadDao();
-					dao.insertFile(upLoadRequest.);
+					dao.insertFile(upLoadRequest.getFileName(),upLoadRequest.getFileBytes(), upLoadRequest.getTimeTillExpiration(),upLoadRequest.getMaxDownloads(),upLoadRequest.getTotalDownloads(),upLoadRequest.getPassword());
 
 					System.out.println("Howdy");
 					successMessage = "true";

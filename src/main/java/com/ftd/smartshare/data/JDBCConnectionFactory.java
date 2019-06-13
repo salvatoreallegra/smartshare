@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class JDBCConnectionFactory {
 
     private static String DRIVER_CLASS_NAME = "org.postgresql.Driver";
-    private static String CONNECTION_URL = "jdbc:postgresql://localhost:5432/smartshare";
+    private static String CONNECTION_URL = "jdbc:postgresql://localhost:5432/smartshare?currentSchema=smartshare";
     private static String USER = "postgres";
     private static String PASSWORD = "JediKnight1";
 

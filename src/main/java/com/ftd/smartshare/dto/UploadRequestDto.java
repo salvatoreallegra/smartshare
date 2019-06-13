@@ -16,10 +16,6 @@ public class UploadRequestDto {
 	private String fileName;
 	@XmlElement
 	private byte[] fileBytes;
-	
-
-
-
 	@XmlElement
 	private Date timeCreated;
 	@XmlElement

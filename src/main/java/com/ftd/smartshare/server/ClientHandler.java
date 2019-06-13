@@ -37,18 +37,16 @@ public class ClientHandler implements Runnable {
 		try {
 
 			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-			BufferedWriter successMessageWriter = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+			BufferedWriter successMessageWriter = new BufferedWriter(
+					new OutputStreamWriter(clientSocket.getOutputStream()));
 			JAXBContext context = JAXBContext.newInstance(UploadRequestDto.class);
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			StringReader stringReader = new StringReader(bufferedReader.readLine());
 
-		
-
 			// Unmarshall stringReader to UploadRequestDto object
 			UploadRequestDto upLoadRequest;
-			String successMessage;  //will be set to true if we write to the database
-			
+			String successMessage; // will be set to true if we write to the database
 
 			upLoadRequest = (UploadRequestDto) unmarshaller.unmarshal(stringReader);
 
@@ -60,13 +58,14 @@ public class ClientHandler implements Runnable {
 //					Marshaller marshaller = contextUnmarshall.createMarshaller();
 //					marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 					// marshaller.marshal(upLoadRequest,out);
-					System.out.println(upLoadRequest.getFileName());
-					System.out.println(upLoadRequest.getPassword());
+//					System.out.println(upLoadRequest.getFileName());
+//					System.out.println(upLoadRequest.getPassword());
 
 					UploadDao dao = new UploadDao();
-					dao.insertFile(upLoadRequest.getFileName(),upLoadRequest.getFileBytes(), upLoadRequest.getTimeTillExpiration(),upLoadRequest.getMaxDownloads(),upLoadRequest.getTotalDownloads(),upLoadRequest.getPassword());
+					dao.insertFile(upLoadRequest.getFileName(), upLoadRequest.getFileBytes(),
+							upLoadRequest.getTimeTillExpiration(), upLoadRequest.getMaxDownloads(),
+							upLoadRequest.getTotalDownloads(), upLoadRequest.getPassword());
 
-					System.out.println("Howdy");
 					successMessage = "true";
 					out.write(successMessage);
 					out.flush();

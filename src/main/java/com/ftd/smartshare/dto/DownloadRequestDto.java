@@ -14,8 +14,7 @@ public class DownloadRequestDto {
 	@XmlElement
 	private String password;
 	@XmlElement
-	private File file;
-	@XmlElement
+	
 	private String fileName;
 	
 	public DownloadRequestDto() {}
@@ -28,13 +27,6 @@ public class DownloadRequestDto {
 		this.password = password;
 	}
 
-	public File getFile() {
-		return file;
-	}
-
-	public void setFile(File file) {
-		this.file = file;
-	}
 
 	public String getFileName() {
 		return fileName;

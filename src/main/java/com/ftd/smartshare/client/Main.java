@@ -13,8 +13,8 @@ class Main {
 //        CommandLine.run(new SmartShare(), "upload");
 //        CommandLine.run(new SmartShare(), "upload", "pom.xml");
 //        CommandLine.run(new SmartShare(), "upload", ".gitignore");
-          CommandLine.run(new SmartShare(), "upload", "pom.xml", "jeb");
-//        CommandLine.run(new SmartShare(), "download", "pom.xml", "password");
+//          CommandLine.run(new SmartShare(), "upload", "pom.xml", "jeb");
+        CommandLine.run(new SmartShare(), "download", "pom.xml", "password");
 //        CommandLine.run(new SmartShare(), "download", "pom.xml", "wrongpassword");
 //        CommandLine.run(new SmartShare(), "download", "test.txt", "password");
 //        CommandLine.run(new SmartShare(), "download", "pom.xml", "password");

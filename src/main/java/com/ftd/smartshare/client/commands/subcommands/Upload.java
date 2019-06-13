@@ -10,71 +10,63 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-@CommandLine.Command(
-        description = "Uploads file using a given 'password', expiration (60 minutes by default), a max downloads (1 by default)",
-        name = "upload",
-        aliases = "u",
-        mixinStandardHelpOptions = true
-)
-
-
+@CommandLine.Command(description = "Uploads file using a given 'password', expiration (60 minutes by default), a max downloads (1 by default)", name = "upload", aliases = "u", mixinStandardHelpOptions = true)
 
 public class Upload implements Runnable {
-	
-	@CommandLine.Parameters(arity="1", index = "0", description = "The file to be uploaded")
-    private File file;
 
-    @CommandLine.Parameters(arity="0", index = "1", description = "The password for the file")
-    private String password = PasswordGenerator.generate();
+	@CommandLine.Parameters(arity = "1", index = "0", description = "The file to be uploaded")
+	private File file;
 
-    private UploadRequestDto uploadDto = new UploadRequestDto();
-    
-    
-    public void run() {
-    	
-    	//Setup byte array to save in dto
-    	byte[] fileByteArray =  new byte[(int) file.length()];     	 
-    	  try {
-    		FileInputStream fis = new FileInputStream(file);
+	@CommandLine.Parameters(arity = "0", index = "1", description = "The password for the file")
+	private String password = PasswordGenerator.generate();
+
+	@CommandLine.Parameters(arity = "0", index = "2", description = "Minutes until file Expiration")
+	private long minutes = -1;
+
+	@CommandLine.Parameters(arity = "0", index = "2", description = "Max Downloads")
+	private int downloads = -1;
+
+	private UploadRequestDto uploadDto = new UploadRequestDto();
+
+	public void run() {
+
+		// Setup byte array to save in dto
+		byte[] fileByteArray = new byte[(int) file.length()];
+		try {
+			FileInputStream fis = new FileInputStream(file);
 			fis.read(fileByteArray);
 			fis.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-    	  
-    	 
-    	
-    	uploadDto.setFileName(file.getName());
-    	uploadDto.setFileBytes(fileByteArray);
-    	uploadDto.setPassword(password);
-    	uploadDto.setMaxDownloads(1);
-    	
-    	
-    	System.out.println("Uploading: " + file.getAbsolutePath());
-        System.out.println("Password will be printed below");
-        System.out.println(password);
-        
-    	
-        boolean response = Api.upload(uploadDto);
-        
-        if(response == true)
-        {
-        	System.out.println("Upload succeeded");
-        }
-        else {
-        	System.out.println("Upload failed, please try again");
-        }
-    	
-    	
-    	 
-    	
-    	
-    	
-       
-        
-        
-    }
+		}
 
+		uploadDto.setFileName(file.getName());
+		uploadDto.setFileBytes(fileByteArray);
+		uploadDto.setPassword(password);
+		if (downloads == -1) {
+			uploadDto.setMaxDownloads(1);
+		} else {
+			uploadDto.setMaxDownloads(downloads);
+		}
+		if (minutes == -1) {
+			uploadDto.setTimeTillExpiration(60);
+		} else {
+			uploadDto.setTimeTillExpiration(minutes);
+		}
+
+		System.out.println("Uploading: " + file.getAbsolutePath());
+		System.out.println("Password will be printed below");
+		System.out.println(password);
+
+		boolean response = Api.upload(uploadDto);
+
+		if (response == true) {
+			System.out.println("Upload succeeded");
+		} else {
+			System.out.println("Upload failed, please try again");
+		}
+
+	}
 
 }

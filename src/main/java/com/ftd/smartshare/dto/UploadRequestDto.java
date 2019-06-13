@@ -1,6 +1,7 @@
 package com.ftd.smartshare.dto;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -17,9 +18,7 @@ public class UploadRequestDto {
 	@XmlElement
 	private byte[] fileBytes;
 	@XmlElement
-	private Date timeCreated;
-	@XmlElement
-	private int timeTillExpiration;
+	private long minutes;
 	@XmlElement
 	private int maxDownloads;
 	@XmlElement
@@ -30,8 +29,7 @@ public class UploadRequestDto {
 	
 	public UploadRequestDto(){
 		
-		timeTillExpiration = 60;
-			
+			minutes = 60l;	
 				
 	}
 	public String getFileName() {
@@ -53,26 +51,18 @@ public class UploadRequestDto {
 	
 
 
-	public Date getTimeCreated() {
-		return timeCreated;
+	
+
+
+	public long getTimeTillExpiration() {
+		return minutes;
 	}
 
 
-	public void setTimeCreated(Date timeCreated) {
-		this.timeCreated = timeCreated;
-	}
-
-
-	public int getTimeTillExpiration() {
-		return timeTillExpiration;
-	}
-
-
-	public void setTimeTillExpiration(int timeTillExpiration) {
-		if((timeTillExpiration < 1) || (timeTillExpiration > 1440)) {
-			throw new IllegalArgumentException();
-		}
-		this.timeTillExpiration = timeTillExpiration;
+	public void setTimeTillExpiration(long minutes) {
+		
+	
+		this.minutes = minutes;
 	}
 
 

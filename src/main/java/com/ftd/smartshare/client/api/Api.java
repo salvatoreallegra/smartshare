@@ -40,14 +40,21 @@ public final class Api {
 
 		) {
 
-			JAXBContext context = JAXBContext.newInstance(UploadRequestDto.class);
+			JAXBContext context = JAXBContext.newInstance(DownloadRequestDto.class);
 			Marshaller marshaller = context.createMarshaller();
 
 			// Marshal request to stringWriter
 			StringWriter stringWriter = new StringWriter();
 			marshaller.marshal(downloadRequestDto, stringWriter);
+			
+			System.out.println("Am I in here");
+			
+			String success = in.readLine();
+			if(success != null) {
+				System.out.println(success);
+			}
 
-			out.println(stringWriter.toString());
+			
 
 		}
 
@@ -84,7 +91,7 @@ public final class Api {
 
 			// Write 'stringified' XML to socket
 			out.println(stringWriter.toString());
-			System.out.println(stringWriter.toString());
+			
 
 			String success = in.readLine();
 			if (success != null) {

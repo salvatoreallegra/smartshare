@@ -12,11 +12,11 @@ class Main {
 //        CommandLine.run(new SmartShare(), "--version");
 //        CommandLine.run(new SmartShare(), "upload");
 		  CommandLine.run(new SmartShare(), "upload", "pom.xml");
-//        CommandLine.run(nrtShare(), "upload", "pom.xml", "jeb");
-//          CommandLine.run(new SmartShare(), "download", "pom.xml", "password");
+//        CommandLine.run(new SmartShare(), "upload", "pom.xml", "jeb");
+//        CommandLine.run(new SmartShare(), "download", "pom.xml", "password");
 //        CommandLine.run(new SmartShare(), "upload", ".gitignore");
-//        CommandLine.run(new SmaShare(), "download", "pom.xml", "wrongpassword");
-//          CommandLine.run(new SmartShare(), "download", "test.txt", "password");
+//        CommandLine.run(new SmartShare(), "download", "pom.xml", "wrongpassword");
+//        CommandLine.run(new SmartShare(), "download", "test.txt", "password");
 //        CommandLine.run(new SmartShare(), "download", "pom.xml", "password");
 //        CommandLine.run(new SmartShare(), "view", "pom.xml", "password");
 //        CommandLine.run(new SmartShare(), "upload", "pom.xml", "password", "-m", "1");

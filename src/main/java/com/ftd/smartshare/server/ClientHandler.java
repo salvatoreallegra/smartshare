@@ -70,6 +70,7 @@ public class ClientHandler implements Runnable {
 						out.write(successMessage);
 						out.flush();
 						clientSocket.close();
+						
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -90,13 +91,7 @@ public class ClientHandler implements Runnable {
 
 					JAXBContext contextUnmarshall;
 					try {
-						
-//						DownloadDao dao = new DownloadDao();
-//						dao.insertFile(upLoadRequest.getFileName(), upLoadRequest.getFileBytes(),
-//								upLoadRequest.getTimeTillExpiration(), upLoadRequest.getMaxDownloads(),
-//								upLoadRequest.getTotalDownloads(), upLoadRequest.getPassword());
-
-						successMessage = "true";
+						successMessage = "<<<<<true Download>>>>>";
 						out.write(successMessage);
 						out.flush();
 						clientSocket.close();
